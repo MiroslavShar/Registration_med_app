@@ -1,3 +1,21 @@
+.nice-table {
+    width: 100%; /* Szerokość tabeli na 100% */
+    border-collapse: collapse; /* Łączenie granic komórek */
+    margin-top: 20px; /* Odstęp od góry */
+    margin-left: 20px; /* Odstęp od góry */
+}
+
+.nice-table th, .nice-table td {
+    border: 1px solid #dddddd; /* Grubość i kolor granic komórek */
+    padding: 8px; /* Wewnętrzny padding komórek */
+    text-align: left; /* Wyrównanie tekstu do lewej */
+}
+
+.nice-table th {
+    background-color: #f2f2f2; /* Kolor tła dla nagłówka */
+    color: #333; /* Kolor tekstu dla nagłówka */
+}
+
 .contener {
     background-color: #f2f2f2; /* szare tło */
     display: flex;

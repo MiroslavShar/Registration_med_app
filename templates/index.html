@@ -37,17 +37,13 @@
         <i class="fas fa-calendar-check"></i>
         <span>Dodaj wizytę</span>
     </a>
+    <a href="{% url 'show_doctors' %}">
+        <i class="fas fa-user-md"></i>
+        <span>Zobacz lekarza</span>
+    </a>
 </div>
 
 
-{#<div classes="menu">#}
-{#<a href="{% url 'doctor' %}">Dodaj lekarza</a>#}
-{#<a href="{% url 'reason' %}">Dodaj powód</a>#}
-{#<a href="{% url 'patient' %}">Dodaj pacjenta</a>#}
-{#<a href="{% url 'history' %}">Dodaj historię choroby pacjenta</a>#}
-{#<a href="{% url 'recommendation' %}">Dodaj zalecenie</a>#}
-{#<a href="{% url 'visit' %}">Dodaj wizytę</a>#}
-{#</div>#}
 <div class="body">{% block content %}{% endblock %}</div>
 </body>
 </html>

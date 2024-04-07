@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% block content %}
+<table class="nice-table">
+    <thead>
+        <tr>
+            <th>Lekarz</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for doctor in doctors %}
+        <tr>
+            <td><a href="/show_doctors/{{ doctor.id }}">{{ doctor.name }} {{ doctor.surname }}</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

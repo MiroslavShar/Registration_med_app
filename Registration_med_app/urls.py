@@ -28,6 +28,8 @@ urlpatterns = [
     path('add_med_history/', views.AddMedicalHistory.as_view(), name='history'),
     path('add_recommendation/', views.AddRecommendation.as_view(), name='recommendation'),
     path('add_visit/', views.AddVisit.as_view(), name='visit'),
+    path('show_doctors/', views.LetSeeDoctor.as_view(), name='show_doctors'),
+    path('show_doctors/<int:id>/', views.LetEditDoctor.as_view(), name='edit_doctor'),
 
 
 ]

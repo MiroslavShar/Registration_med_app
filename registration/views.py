@@ -77,5 +77,21 @@ class AddVisit(View):
             return redirect('home')
         return render(request, 'add_visit.html', {'form': form})
 
-# class LetSeeDoctor(View):
+class LetSeeDoctor(View):
+    def get(self, request):
+        db_doctors = Doctor.objects.all()
+        return render(request, 'show_doctors.html', {'doctors': db_doctors})
+
+class LetEditDoctor(View):
+    def get(self, request, id):
+        doctor = Doctor.objects.get(pk=id)
+        form = AddDoctorForm(instance=doctor)
+        return render(request, 'add_doctor.html', {'form': form})
+    def post(self, request, id):
+        dostor = Doctor.objects.get(pk=id)
+        form = AddDoctorForm(request.POST, instance=dostor)
+        if form.is_valid():
+            form.save()
+            return redirect('show_doctors')
+        return render(request, 'add_doctor.html', {'form': form})
 
