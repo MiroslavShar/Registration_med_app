@@ -6,7 +6,7 @@ class Doctor(models.Model):
     specialization = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.name
+        return f'{self.name} {self.surname}'
 
 class Patient(models.Model):
     name = models.CharField(max_length=64)
@@ -14,6 +14,9 @@ class Patient(models.Model):
     # medical_history = models.ForeignKey(MedicalHistory, on_delete=models.CASCADE)
     # doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     # recommendation = models.ForeignKey(Recommendation, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.name} {self.surname}'
 
 class MedicalHistory(models.Model):
     interview = models.CharField(max_length=510)
@@ -33,9 +36,15 @@ class Recommendation(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     new_visit_date = models.DateTimeField()
 
+    def __str__(self):
+        return f'{self.recommendations} {self.patient} {self.new_visit_date}'
+
 
 class ReasonForVisit(models.Model):
     reasons = models.CharField(max_length=64)
+
+    def __str__(self):
+        return f'{self.reasons}'
 
 
 

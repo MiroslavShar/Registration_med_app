@@ -16,3 +16,19 @@ class AddPatientForm(forms.ModelForm):
     class Meta:
         model = Patient
         fields = '__all__'
+
+class AddMedHistoryForm(forms.ModelForm):
+    class Meta:
+        model = MedicalHistory
+        fields = '__all__'
+
+class AddRecommendationForm(forms.ModelForm):
+
+    class Meta:
+        model = Recommendation
+        fields = '__all__'
+
+class AddVisitForm(forms.ModelForm):
+    class Meta:
+        model = Visit
+        fields = '__all__'

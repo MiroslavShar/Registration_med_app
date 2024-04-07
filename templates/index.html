@@ -6,12 +6,48 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <title>Aplikacja medyczna - rejestrcja</title>
 </head>
-<body>
-<a href="{% url 'doctor' %}">Dodaj lekarza</a>
-<a href="{% url 'reason' %}">Dodaj powód</a>
-<a href="{% url 'patient' %}">Dodaj pacjenta</a>
+<body class="contener">
+<div class="menu">
+    <a href="{% url 'doctor' %}">
+        <i class="fas fa-user-md"></i>
+        <span>Dodaj lekarza</span>
+    </a>
+    <a href="{% url 'reason' %}">
+        <i class="fas fa-briefcase-medical"></i>
+        <span>Dodaj powód</span>
+    </a>
+    <a href="{% url 'patient' %}">
+        <i class="fas fa-user-injured"></i>
+        <span>Dodaj pacjenta</span>
+    </a>
+    <a href="{% url 'history' %}">
+        <i class="fas fa-notes-medical"></i>
+        <span>Dodaj historię choroby pacjenta</span>
+    </a>
+    <a href="{% url 'recommendation' %}">
+        <i class="fas fa-file-medical"></i>
+        <span>Dodaj zalecenie</span>
+    </a>
+    <a href="{% url 'visit' %}">
+        <i class="fas fa-calendar-check"></i>
+        <span>Dodaj wizytę</span>
+    </a>
+</div>
 
+
+{#<div classes="menu">#}
+{#<a href="{% url 'doctor' %}">Dodaj lekarza</a>#}
+{#<a href="{% url 'reason' %}">Dodaj powód</a>#}
+{#<a href="{% url 'patient' %}">Dodaj pacjenta</a>#}
+{#<a href="{% url 'history' %}">Dodaj historię choroby pacjenta</a>#}
+{#<a href="{% url 'recommendation' %}">Dodaj zalecenie</a>#}
+{#<a href="{% url 'visit' %}">Dodaj wizytę</a>#}
+{#</div>#}
+<div class="body">{% block content %}{% endblock %}</div>
 </body>
 </html>

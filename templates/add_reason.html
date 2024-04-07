@@ -1,5 +1,10 @@
-<form method="post">
+{% extends 'index.html' %}
+{% block content %}
+<div class="form-container">
+    <form method="post" class="nice-form">
         {% csrf_token %}
         {{ form.as_p }}
-    <input type="submit">
-</form>
+        <button type="submit" class="nice-button">Dodaj powód</button>
+    </form>
+</div>
+{% endblock %}

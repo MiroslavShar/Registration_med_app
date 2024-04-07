@@ -1,0 +1,61 @@
+.contener {
+    background-color: #f2f2f2; /* szare tło */
+    display: flex;
+    justify-content: flex-start; /* przesuwa przyciski na lewą stronę */
+    padding: 20px; /* dodatkowy padding dla estetyki */
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu a {
+    display: flex;
+    align-items: center; /* Wyrównuje zawartość do środka pionowo */
+    background-color: #00bfff; /* niebieski kolor przycisków */
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px; /* dodatkowy padding dla przycisków */
+    margin-bottom: 10px; /* odstęp między przyciskami */
+    border-radius: 5px; /* zaokrąglenie krawędzi przycisków */
+}
+
+.menu a i {
+    margin-right: 10px; /* Dodatkowy odstęp między ikoną a tekstem */
+}
+
+.body {
+    margin-top: 20px; /* odstęp między menu a treścią */
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-between; /* Rozstawia elementy równomiernie w kontenerze */
+    align-items: center;
+    height: 40vh; /* Ustawienie wysokości kontenera formularza na całą wysokość widoku */
+    padding: 0 20px; /* Dodatkowy padding po bokach */
+}
+
+.nice-form {
+    flex: 1; /* Rozciąganie formularza, aby zajmował całe dostępne miejsce */
+    max-width: calc(100% - 10px); /* Maksymalna szerokość formularza (50% szerokości widoku minus padding) */
+    background-color: #ffffff; /* Kolor tła formularza */
+    padding: 20px;
+    border-radius: 10px; /* Zaokrąglenie rogów formularza */
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Cień dla efektu głębi */
+}
+
+.nice-button {
+    background-color: #00bfff; /* Kolor tła przycisku */
+    color: white;
+    padding: 10px 20px; /* Rozmiar przycisku */
+    border: none;
+    border-radius: 5px; /* Zaokrąglenie rogów przycisku */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Płynne przejście koloru tła */
+}
+
+.nice-button:hover {
+    background-color: #007acc; /* Kolor tła przycisku po najechaniu kursorem */
+}
