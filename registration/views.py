@@ -19,6 +19,24 @@ class AddDoctor(View):
             return redirect('home')
         return render(request, 'add_doctor.html', {'form': form})
 
+class LetSeeDoctor(View):
+    def get(self, request):
+        db_doctors = Doctor.objects.all()
+        return render(request, 'show_doctors.html', {'doctors': db_doctors})
+
+class LetEditDoctor(View):
+    def get(self, request, id):
+        doctor = Doctor.objects.get(pk=id)
+        form = AddDoctorForm(instance=doctor)
+        return render(request, 'add_doctor.html', {'form': form})
+    def post(self, request, id):
+        dostor = Doctor.objects.get(pk=id)
+        form = AddDoctorForm(request.POST, instance=dostor)
+        if form.is_valid():
+            form.save()
+            return redirect('show_doctors')
+        return render(request, 'add_doctor.html', {'form': form})
+
 class AddReason(View):
     def get(self, request):
         form = ReasonForm
@@ -28,6 +46,25 @@ class AddReason(View):
         if form.is_valid():
             obj = form.save()
             return redirect('home')
+        return render(request, 'add_reason.html', {'form': form})
+
+class LetSeeReason(View):
+    def get(self, request):
+        db_reason = ReasonForVisit.objects.all()
+        return render(request, 'show_reasons.html', {'reasons': db_reason})
+
+class LetEditReason(View):
+    def get(self, request, id):
+        reason = ReasonForVisit.objects.get(pk=id)
+        form = ReasonForm(instance=reason)
+        return render(request, 'add_reason.html', {'form': form})
+
+    def post(self, request, id):
+        reason = ReasonForVisit.objects.get(pk=id)
+        form = ReasonForm(request.POST, instance=reason)
+        if form.is_valid():
+            form.save()
+            return redirect('show_reasons')
         return render(request, 'add_reason.html', {'form': form})
 
 class AddPatient(View):
@@ -41,6 +78,25 @@ class AddPatient(View):
             return redirect('home')
         return render(request, 'add_patient.html', {'form': form})
 
+class LetShowPatients(View):
+    def get(self, request):
+        db_patient = Patient.objects.all()
+        return render(request, 'show_patient.html', {'patients': db_patient})
+
+class LetEditPatient(View):
+    def get(self, request, id):
+        patient = Patient.objects.get(pk=id)
+        form = AddPatientForm(instance=patient)
+        return render(request, 'add_patient.html', {'form': form})
+
+    def post(self, request, id):
+        patient = Patient.objects.get(pk=id)
+        form = AddPatientForm(request.POST, instance=patient)
+        if form.is_valid():
+            form.save()
+            return redirect('show_patients')
+        return render(request, 'add_patient.html', {'form': form})
+
 class AddMedicalHistory(View):
     def get(self, request):
         form = AddMedHistoryForm
@@ -51,6 +107,25 @@ class AddMedicalHistory(View):
         if form.is_valid():
             obj = form.save()
             return redirect('home')
+        return render(request, 'add_med_history.html', {'form': form})
+
+class LetShowHistory(View):
+    def get(self, request):
+        db_history = MedicalHistory.objects.all()
+        return render(request, 'show_history.html', {'histories': db_history})
+
+class LetEditHistory(View):
+    def get(self, request, id):
+        history = MedicalHistory.objects.get(pk=id)
+        form = AddMedHistoryForm(instance=history)
+        return render(request, 'add_med_history.html', {'form': form})
+
+    def post(self, request, id):
+        history = MedicalHistory.objects.get(pk=id)
+        form = AddMedHistoryForm(request.POST, instance=history)
+        if form.is_valid():
+            form.save()
+            return redirect('show_histories')
         return render(request, 'add_med_history.html', {'form': form})
 
 class AddRecommendation(View):
@@ -77,21 +152,5 @@ class AddVisit(View):
             return redirect('home')
         return render(request, 'add_visit.html', {'form': form})
 
-class LetSeeDoctor(View):
-    def get(self, request):
-        db_doctors = Doctor.objects.all()
-        return render(request, 'show_doctors.html', {'doctors': db_doctors})
 
-class LetEditDoctor(View):
-    def get(self, request, id):
-        doctor = Doctor.objects.get(pk=id)
-        form = AddDoctorForm(instance=doctor)
-        return render(request, 'add_doctor.html', {'form': form})
-    def post(self, request, id):
-        dostor = Doctor.objects.get(pk=id)
-        form = AddDoctorForm(request.POST, instance=dostor)
-        if form.is_valid():
-            form.save()
-            return redirect('show_doctors')
-        return render(request, 'add_doctor.html', {'form': form})
 

@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+{% block content %}
+<table class="nice-table">
+    <thead>
+        <tr>
+            <th>Wywiad ogólny</th>
+            <th>Wywiad okulistyczny</th>
+            <th>Visus do dali</th>
+            <th>Visus do bliży</th>
+            <th>Tonus</th>
+            <th>Odcinek przedni OP</th>
+            <th>Odcinek przedni OL</th>
+            <th>Dno OP</th>
+            <th>Dno OL</th>
+            <th>Data wywiadu</th>
+            <th>Pacjent</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for history in histories %}
+        <tr>
+            <td><a href="/show_histories/{{ history.id }}">{{ history.interview }}</a></td>
+            <td>{{ history.ophthalmological_interview }}</td>
+            <td>{{ history.visus_distance }}</td>
+            <td>{{ history.visus_near }}</td>
+            <td>{{ history.tonus }}</td>
+            <td>{{ history.anterior_segment_right_eye }}</td>
+            <td>{{ history.anterior_segment_left_eye }}</td>
+            <td>{{ history.fundus_segment_right_eye }}</td>
+            <td>{{ history.fundus_left_eye }}</td>
+            <td>{{ history.date }}</td>
+            <td>{{ history.patient }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

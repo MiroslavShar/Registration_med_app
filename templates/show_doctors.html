@@ -4,12 +4,14 @@
     <thead>
         <tr>
             <th>Lekarz</th>
+            <th>Specjalizacja</th>
         </tr>
     </thead>
     <tbody>
         {% for doctor in doctors %}
         <tr>
             <td><a href="/show_doctors/{{ doctor.id }}">{{ doctor.name }} {{ doctor.surname }}</a></td>
+            <td>{{ doctor.specialization }}</td>
         </tr>
         {% endfor %}
     </tbody>

@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% block content %}
+<table class="nice-table">
+    <thead>
+        <tr>
+            <th>Cel wizyty</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for reason in reasons %}
+        <tr>
+            <td><a href="/show_reasons/{{ reason.id }}">{{ reason.reasons }}</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

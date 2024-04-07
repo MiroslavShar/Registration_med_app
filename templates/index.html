@@ -19,7 +19,7 @@
     </a>
     <a href="{% url 'reason' %}">
         <i class="fas fa-briefcase-medical"></i>
-        <span>Dodaj powód</span>
+        <span>Dodaj cel wizyty</span>
     </a>
     <a href="{% url 'patient' %}">
         <i class="fas fa-user-injured"></i>
@@ -40,6 +40,18 @@
     <a href="{% url 'show_doctors' %}">
         <i class="fas fa-user-md"></i>
         <span>Zobacz lekarza</span>
+    </a>
+    <a href="{% url 'show_reasons' %}">
+        <i class="fas fa-briefcase-medical"></i>
+        <span>Zobacz cel wizyty</span>
+    </a>
+    <a href="{% url 'show_patients' %}">
+        <i class="fas fa-user-injured"></i>
+        <span>Zobacz listę pacjentów</span>
+    </a>
+    <a href="{% url 'show_histories' %}">
+        <i class="fas fa-notes-medical"></i>
+        <span>Zobacz listę chorób pacjentów</span>
     </a>
 </div>
 

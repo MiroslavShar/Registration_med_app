@@ -1,5 +1,5 @@
 .nice-table {
-    width: 100%; /* Szerokość tabeli na 100% */
+    width: 200%; /* Szerokość tabeli na 100% */
     border-collapse: collapse; /* Łączenie granic komórek */
     margin-top: 20px; /* Odstęp od góry */
     margin-left: 20px; /* Odstęp od góry */
@@ -12,7 +12,7 @@
 }
 
 .nice-table th {
-    background-color: #f2f2f2; /* Kolor tła dla nagłówka */
+    background-color: #7fdbe7; /* Kolor tła dla nagłówka */
     color: #333; /* Kolor tekstu dla nagłówka */
 }
 
@@ -51,13 +51,15 @@
     display: flex;
     justify-content: space-between; /* Rozstawia elementy równomiernie w kontenerze */
     align-items: center;
-    height: 40vh; /* Ustawienie wysokości kontenera formularza na całą wysokość widoku */
+    height: 50vh; /* Ustawienie wysokości kontenera formularza na całą wysokość widoku */
     padding: 0 20px; /* Dodatkowy padding po bokach */
 }
 
 .nice-form {
-    flex: 1; /* Rozciąganie formularza, aby zajmował całe dostępne miejsce */
+    flex: auto; /* Rozciąganie formularza, aby zajmował całe dostępne miejsce */
     max-width: calc(100% - 10px); /* Maksymalna szerokość formularza (50% szerokości widoku minus padding) */
+    margin-top: 100px; /* Odstęp od góry */
+
     background-color: #ffffff; /* Kolor tła formularza */
     padding: 20px;
     border-radius: 10px; /* Zaokrąglenie rogów formularza */

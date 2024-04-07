@@ -30,6 +30,11 @@ urlpatterns = [
     path('add_visit/', views.AddVisit.as_view(), name='visit'),
     path('show_doctors/', views.LetSeeDoctor.as_view(), name='show_doctors'),
     path('show_doctors/<int:id>/', views.LetEditDoctor.as_view(), name='edit_doctor'),
-
+    path('show_reasons/', views.LetSeeReason.as_view(), name='show_reasons'),
+    path('show_reasons/<int:id>/', views.LetEditReason.as_view(), name='edit_reasons'),
+    path('show_patient/', views.LetShowPatients.as_view(), name='show_patients'),
+    path('show_patient/<int:id>/', views.LetEditPatient.as_view(), name='edit_patient'),
+    path('show_histories/', views.LetShowHistory.as_view(), name='show_histories'),
+    path('show_histories/<int:id>', views.LetEditHistory.as_view(), name='edit_history'),
 
 ]

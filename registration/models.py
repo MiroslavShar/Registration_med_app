@@ -21,9 +21,9 @@ class Patient(models.Model):
 class MedicalHistory(models.Model):
     interview = models.CharField(max_length=510)
     ophthalmological_interview = models.CharField(max_length=510)
-    visus_distance = models.IntegerField
-    visus_near = models.IntegerField
-    tonus = models.IntegerField
+    visus_distance = models.CharField(max_length=255, null=True)
+    visus_near = models.CharField(max_length=255, null=True)
+    tonus = models.CharField(max_length=255, null=True)
     anterior_segment_right_eye = models.CharField(max_length=255)
     anterior_segment_left_eye = models.CharField(max_length=255)
     fundus_segment_right_eye = models.CharField(max_length=255)
