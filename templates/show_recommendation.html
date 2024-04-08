@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% block content %}
+<table class="nice-table">
+    <thead>
+        <tr>
+            <th>Lista rekomendacji</th>
+            <th>Pacjent</th>
+            <th>Data nowej wizyty</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for recommendation in recommendations %}
+        <tr>
+            <td><a href="/show_recommendations/{{ recommendation.id }}">{{ recommendation.recommendations }}</a></td><td><a> {{ recommendation.patient }}</a></td> <td><a> {{ recommendation.new_visit_date }}</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+ 

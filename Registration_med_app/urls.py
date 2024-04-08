@@ -36,5 +36,7 @@ urlpatterns = [
     path('show_patient/<int:id>/', views.LetEditPatient.as_view(), name='edit_patient'),
     path('show_histories/', views.LetShowHistory.as_view(), name='show_histories'),
     path('show_histories/<int:id>', views.LetEditHistory.as_view(), name='edit_history'),
+    path('show_recommendations/', views.LetShowRecommendation.as_view(), name='show_recommendation'),
+    path('show_recommendations/<int:id>', views.LetEditRecommendation.as_view(), name='edit_recommendation'),
 
 ]

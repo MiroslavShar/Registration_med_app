@@ -140,6 +140,25 @@ class AddRecommendation(View):
             return redirect('home')
         return render(request, 'add_recommendation.html', {'form': form})
 
+class LetShowRecommendation(View):
+    def get(self, request):
+        db_recommendation = Recommendation.objects.all()
+        return render(request, 'show_recommendation.html', {'recommendations': db_recommendation})
+
+class LetEditRecommendation(View):
+    def get(self, request, id):
+        recommendation = Recommendation.objects.get(pk=id)
+        form = AddRecommendationForm(instance=recommendation)
+        return render(request, 'add_recommendation.html', {'form': form})
+
+    def post(self, request, id):
+        recommendation = Recommendation.objects.get(pk=id)
+        form = AddRecommendationForm(request.POST, instance=recommendation)
+        if form.is_valid():
+            form.save()
+            return redirect('show_recommendation')
+        return render(request, 'add_recommendation.html', {'form': form})
+
 class AddVisit(View):
     def get(self, request):
         form = AddVisitForm
