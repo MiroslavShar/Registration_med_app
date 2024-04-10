@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.views import View
 from registration.models import Doctor, MedicalHistory, Recommendation, ReasonForVisit, Patient, Visit
 from django.http import HttpResponse
-from registration.forms import ReasonForm, AddDoctorForm, AddPatientForm, AddMedHistoryForm, AddRecommendationForm, AddVisitForm, VisitSearchForm
+from registration.forms import ReasonForm, AddDoctorForm, AddPatientForm, AddMedHistoryForm, AddRecommendationForm, AddVisitForm, VisitSearchForm, PatientSearch
 
 class IndexPage(View):
     def get(self, request):
@@ -82,7 +82,14 @@ class AddPatient(View):
 class LetShowPatients(View):
     def get(self, request):
         db_patient = Patient.objects.all()
-        return render(request, 'show_patient.html', {'patients': db_patient})
+        form = PatientSearch(request.GET)
+        if form.is_valid():
+            name = form.cleaned_data.get('name', '')
+            db_patient = db_patient.filter(name__contains=name)
+            surname = form.cleaned_data.get('surname', '')
+            if surname:
+                db_patient = db_patient.filter(surname__contains=surname)
+        return render(request, 'show_patient.html', {'patients': db_patient, 'form': form})
 
 class LetDeletePatient(View):
 

@@ -48,3 +48,8 @@ class VisitSearchForm(forms.Form):
         widget=forms.CheckboxSelectMultiple,
         queryset=ReasonForVisit.objects.all()
     )
+
+class PatientSearch(forms.Form):
+    name = forms.CharField(required=False)
+    surname = forms.CharField(required=False)
+
