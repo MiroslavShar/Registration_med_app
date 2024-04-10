@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.views import View
 from registration.models import Doctor, MedicalHistory, Recommendation, ReasonForVisit, Patient, Visit
 from django.http import HttpResponse
-from registration.forms import ReasonForm, AddDoctorForm, AddPatientForm, AddMedHistoryForm, AddRecommendationForm, AddVisitForm
+from registration.forms import ReasonForm, AddDoctorForm, AddPatientForm, AddMedHistoryForm, AddRecommendationForm, AddVisitForm, VisitSearchForm
 
 class IndexPage(View):
     def get(self, request):
@@ -82,6 +83,22 @@ class LetShowPatients(View):
     def get(self, request):
         db_patient = Patient.objects.all()
         return render(request, 'show_patient.html', {'patients': db_patient})
+
+class LetDeletePatient(View):
+
+    def get(self, request, id):
+        patient = Patient.objects.get(pk=id)
+        form = AddPatientForm(instance=patient)
+        return render(request, 'delete_patient.html', {'form': form})
+    def post(self, request, id):
+        db_patient = Patient.objects.get(pk=id)
+        form = AddPatientForm(request.POST, instance=db_patient)
+        if form.is_valid():
+            db_patient.delete()
+            return redirect('show_patients')
+        return redirect('show_patients')
+
+
 
 class LetEditPatient(View):
     def get(self, request, id):
@@ -170,6 +187,38 @@ class AddVisit(View):
             obj = form.save()
             return redirect('home')
         return render(request, 'add_visit.html', {'form': form})
+
+class LetShowVisit(View):
+    def get(self, request):
+        db_visit = Visit.objects.all()
+        form = VisitSearchForm(request.GET)
+        if form.is_valid():
+            patient = form.cleaned_data.get('patient', '')
+            db_visit = db_visit.filter(patient__name__icontains=patient)
+            doctor = form.cleaned_data.get('doctor')
+            if doctor:
+                db_visit = db_visit.filter(doctor__name__contains=doctor)
+            date = form.cleaned_data.get('date')
+            if date:
+                db_visit = db_visit.filter(date=date)
+            reason = form.cleaned_data.get('reason')
+            for r in reason:
+                db_visit = db_visit.filter(reason=r)
+        return render(request, 'show_visit.html', {'visits': db_visit, 'form': form})
+
+class LetEditVisit(View):
+    def get(self, request, id):
+        visit = Visit.objects.get(pk=id)
+        form = AddVisitForm(instance=visit)
+        return render(request, 'add_visit.html', {'form': form})
+
+    def post(self, request, id):
+        visit = Visit.objects.get(pk=id)
+        form = AddVisitForm(request.POST, instance=visit)
+        if form.is_valid():
+            form.save()
+            return redirect('show_visit')
+        return render(request, 'add_visit.html', {'visits': visit})
 
 
 

@@ -32,3 +32,19 @@ class AddVisitForm(forms.ModelForm):
     class Meta:
         model = Visit
         fields = '__all__'
+        widgets = {
+            'doctor': forms.CheckboxSelectMultiple
+        }
+
+class VisitSearchForm(forms.Form):
+    patient = forms.CharField(required=False)
+    doctor = forms.ModelChoiceField(
+        queryset=Doctor.objects.all(),
+        required=False
+    )
+    date = forms.DateField(required=False)
+    reason = forms.ModelMultipleChoiceField(
+        required=False,
+        widget=forms.CheckboxSelectMultiple,
+        queryset=ReasonForVisit.objects.all()
+    )

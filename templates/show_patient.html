@@ -4,12 +4,14 @@
     <thead>
         <tr>
             <th>Lista pacjentów</th>
+            <th>Usun</th>
         </tr>
     </thead>
     <tbody>
         {% for patient in patients %}
         <tr>
             <td><a href="/show_patient/{{ patient.id }}">{{ patient.name }} {{ patient.surname }}</a></td>
+            <td><a href="/delete_patient/{{ patient.id }}">X</a></td>
         </tr>
         {% endfor %}
     </tbody>

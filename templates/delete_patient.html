@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="form-container">
+    <form method="post" class="nice-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="nice-button">Usun pacjenta</button>
+    </form>
+</div>
+{% endblock %}

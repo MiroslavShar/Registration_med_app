@@ -50,6 +50,9 @@ class ReasonForVisit(models.Model):
 
 class Visit(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    doctor = models.ManyToManyField(Doctor)
     date = models.DateTimeField()
     reason = models.ForeignKey(ReasonForVisit, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.patient} {self.doctor} {self.date} {self.reason}'

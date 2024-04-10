@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% block content %}
+    <form class="nice-form">
+    {{ form.as_p }}
+    <input type="submit">
+    </form>
+<table class="nice-table">
+    <thead>
+        <tr>
+            <th>Pacjent</th>
+            <th>Lekarz</th>
+            <th>Data wizyty</th>
+            <th>Cel wizyty</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for visit in visits %}
+        <tr>
+            <td><a href="/show_visit/{{ visit.id }}">{{ visit.patient }}</a></td>
+            <td>{{ visit.doctor }}</td>
+            <td>{{ visit.date }}</td>
+            <td>{{ visit.reason }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

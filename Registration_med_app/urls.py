@@ -38,5 +38,8 @@ urlpatterns = [
     path('show_histories/<int:id>', views.LetEditHistory.as_view(), name='edit_history'),
     path('show_recommendations/', views.LetShowRecommendation.as_view(), name='show_recommendation'),
     path('show_recommendations/<int:id>', views.LetEditRecommendation.as_view(), name='edit_recommendation'),
+    path('show_visit/', views.LetShowVisit.as_view(), name='show_visit'),
+    path('show_visit/<int:id>', views.LetEditVisit.as_view(), name='edit_visit'),
+    path('delete_patient/<int:id>/', views.LetDeletePatient.as_view(), name='delete_patient'),
 
 ]
