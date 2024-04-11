@@ -46,5 +46,5 @@ urlpatterns = [
     path('delete_patient/<int:id>/', views.LetDeletePatient.as_view(), name='delete_patient'),
     path('create_user/', ac_views.RegisterUserView.as_view(), name='create_user'),
     path('login/', ac_views.LoginView.as_view(), name='login'),
-    path('create_user/', ac_views.LogOut.as_view(), name='logout'),
+    path('logout_user/', ac_views.Logout.as_view(), name='logout'),
 ]

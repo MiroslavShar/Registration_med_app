@@ -38,7 +38,7 @@ class LoginView(View):
                 return redirect(redirect_url)
         return render(request, 'form.html', {'form': form})
 
-class LogOut(View):
+class Logout(View):
     def get(self, request):
         logout(request)
         return redirect('home')
