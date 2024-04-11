@@ -15,9 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-from django.views.generic import TemplateView
+from django.urls import path
 from registration import views
+from django.views.generic import TemplateView
+from accounts import views as ac_views
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,11 +38,13 @@ urlpatterns = [
     path('show_patient/', views.LetShowPatients.as_view(), name='show_patients'),
     path('show_patient/<int:id>/', views.LetEditPatient.as_view(), name='edit_patient'),
     path('show_histories/', views.LetShowHistory.as_view(), name='show_histories'),
-    path('show_histories/<int:id>', views.LetEditHistory.as_view(), name='edit_history'),
+    path('show_histories/<int:id>/', views.LetEditHistory.as_view(), name='edit_history'),
     path('show_recommendations/', views.LetShowRecommendation.as_view(), name='show_recommendation'),
-    path('show_recommendations/<int:id>', views.LetEditRecommendation.as_view(), name='edit_recommendation'),
+    path('show_recommendations/<int:id>/', views.LetEditRecommendation.as_view(), name='edit_recommendation'),
     path('show_visit/', views.LetShowVisit.as_view(), name='show_visit'),
-    path('show_visit/<int:id>', views.LetEditVisit.as_view(), name='edit_visit'),
+    path('show_visit/<int:id>/', views.LetEditVisit.as_view(), name='edit_visit'),
     path('delete_patient/<int:id>/', views.LetDeletePatient.as_view(), name='delete_patient'),
-
+    path('create_user/', ac_views.RegisterUserView.as_view(), name='create_user'),
+    path('login/', ac_views.LoginView.as_view(), name='login'),
+    path('create_user/', ac_views.LogOut.as_view(), name='logout'),
 ]

@@ -4,6 +4,9 @@ from django.views import View
 from registration.models import Doctor, MedicalHistory, Recommendation, ReasonForVisit, Patient, Visit
 from django.http import HttpResponse
 from registration.forms import ReasonForm, AddDoctorForm, AddPatientForm, AddMedHistoryForm, AddRecommendationForm, AddVisitForm, VisitSearchForm, PatientSearch
+from django.contrib.auth.models import User, Group, Permission
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
+
 
 class IndexPage(View):
     def get(self, request):

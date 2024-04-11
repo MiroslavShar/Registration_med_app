@@ -61,7 +61,20 @@
         <i class="fas fa-calendar-check"></i>
         <span>Zobacz listę wizyt</span>
     </a>
+     <a href="{% url 'create_user' %}">
+        <i class="fas fa-calendar-check"></i>
+        <span>Stworz uzytkownika</span>
+    </a>
+     <a href="{% url 'login' %}">
+        <i class="fas fa-calendar-check"></i>
+        <span>Login</span>
+    </a>
+    <a href="{% url 'logout' %}">
+        <i class="fas fa-calendar-check"></i>
+        <span>Logout</span>
+    </a>
 </div>
+
 
 
 <div class="body">{% block content %}{% endblock %}</div>
