@@ -124,7 +124,7 @@ class LetEditPatient(View):
             return redirect('show_patients')
         return render(request, 'add_patient.html', {'form': form})
 
-class AddMedicalHistory(View):
+class AddMedicalHistory(LoginRequiredMixin,View):
     def get(self, request):
         form = AddMedHistoryForm
         return render(request, 'add_med_history.html', {'form': form})
@@ -133,7 +133,7 @@ class AddMedicalHistory(View):
         form = AddMedHistoryForm(request.POST)
         if form.is_valid():
             obj = form.save()
-            return redirect('home')
+            return redirect('history')
         return render(request, 'add_med_history.html', {'form': form})
 
 class LetShowHistory(View):
