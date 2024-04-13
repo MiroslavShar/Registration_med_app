@@ -44,3 +44,19 @@ def visits(patients, doctors, reasons, date="2024-12-10 16:00"):
         visits.append(v)
         return visits
 
+@pytest.fixture
+def histories(patients, date='3000-07-04'):
+    histories = []
+    for x in range(7):
+        histories.append(MedicalHistory.objects.create(interview=x,
+                                                       ophthalmological_interview=x,
+                                                       visus_distance=x,
+                                                       visus_near=x,
+                                                       tonus=x,
+                                                       anterior_segment_right_eye=x,
+                                                       anterior_segment_left_eye=x,
+                                                       fundus_segment_right_eye=x,
+                                                       fundus_left_eye=x,
+                                                       patient=patients[x],
+                                                       date=date))
+        return histories

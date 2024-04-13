@@ -15,13 +15,18 @@
     </thead>
     <tbody>
         {% for visit in visits %}
+        {% for doctor in visit.doctor.all %}
         <tr>
             <td><a href="/show_visit/{{ visit.id }}">{{ visit.patient }}</a></td>
-            <td>{{ visit.doctor }}</td>
+            
+            <td>{{ doctor.name }} {{ doctor.surname }}</td>
+        {% endfor %}
             <td>{{ visit.date }}</td>
             <td>{{ visit.reason }}</td>
         </tr>
-        {% endfor %}
+            {% endfor %}
+        
+    
     </tbody>
 </table>
 {% endblock %}

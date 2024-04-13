@@ -106,7 +106,7 @@ class LetDeletePatient(View):
         if form.is_valid():
             db_patient.delete()
             return redirect('show_patients')
-        return redirect('show_patients')
+        return redirect('home')
 
 
 
@@ -133,7 +133,7 @@ class AddMedicalHistory(LoginRequiredMixin,View):
         form = AddMedHistoryForm(request.POST)
         if form.is_valid():
             obj = form.save()
-            return redirect('history')
+            return redirect('home')
         return render(request, 'add_med_history.html', {'form': form})
 
 class LetShowHistory(View):
